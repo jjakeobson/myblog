@@ -22,40 +22,27 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
 
-  <div class="row">
-    <div class="col s12 m4 l3 grey z-depth-3">
-  		<ul>
-  			<li class="category">Website</li>
-  			<li><%= link_to "Blog", root_path %></li>
-  		</ul>
-
-  		<ul>
-  			<li class="category">Social</li>
-  			<li><a href="https://github.com/jjakeobson">Github</a></li>
+  <nav class="grey darken-2">
+    <div class="nav-wrapper">
+      <h4 class="brand-logo">Logo?</h4>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><%= link_to "About", about_path %></li>
+        <li><a href="https://github.com/jjakeobson">Github</a></li>
   			<li><a href="mailto:jakeejacobson@gmail.com">Email</a></li>
-  		</ul>
-
-
+        <li><%= link_to "Blog", root_path %></li>
+        <li><%= link_to "New Post", new_post_path %></li>
+        <li><a href="#">Admin</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
     </div>
+  </nav>
 
-    <nav class="blue">
-      <div class="nav-wrapper">
-        <h4 class="brand-logo">All posts</h4>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><%= link_to "New Post", new_post_path %></li>
-          <li><a href="#">Admin</a></li>
-          <li><a href="#">Logout</a></li>
-        </ul>
-      </div>
-    </nav>
+  <div class="container">
+    <% flash.each do |name, msg| %>
+      <%= content_tag(:div, msg, class: "alert") %>
+    <% end %>
 
-    <div class="col s12 m8 l9 purple z-depth-5">
-      <% flash.each do |name, msg| %>
-        <%= content_tag(:div, msg, class: "alert") %>
-      <% end %>
-
-      <%= yield %>
-    </div>
+    <%= yield %>
   </div>
 
   <footer class="page-footer">
